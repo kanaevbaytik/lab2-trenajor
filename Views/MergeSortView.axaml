@@ -1,0 +1,78 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Baytik.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="1450"
+             x:DataType="vm:MergeSortViewModel"
+             x:Class="Baytik.Views.MergeSortView">
+  <StackPanel>
+    <TextBlock Text="Сортировка слиянием с использованием битовых масок"
+               Classes="h1"/>
+    <TextBlock Classes="body">
+      Сортировка слиянием с использованием битовых масок - это
+      вариант классической сортировки слиянием,  который
+      использует битовые маски для оптимизации процесса.
+    </TextBlock>
+
+    <TextBlock Classes="body">
+      Основная идея этого алгоритма заключается в разбиении
+      массива данных на подмассивы, которые затем сливаются
+      в отсортированном порядке с использованием
+      битовых масок.
+    </TextBlock>
+
+    <TextBlock Text="Kраткое описание алгоритма"
+               TextWrapping="Wrap"
+               Classes="h2"/>
+
+    <TextBlock Classes="body">
+      1. Разбиение массива данных: Исходный массив данных
+      разделяется на более мелкие подмассивы. Размер и
+      количество этих подмассивов зависит от конкретной
+      реализации, но часто используются степени двойки
+      для оптимизации.
+    </TextBlock>
+
+    <TextBlock Classes="body">
+      2. Сортировка подмассивов: Каждый подмассив сортируется отдельно,
+      чаще всего с использованием того же алгоритма сортировки слиянием.
+      Этот шаг выполняется рекурсивно, пока подмассивы не достигнут
+      минимально допустимого размера для сортировки (обычно один элемент).
+    </TextBlock>
+
+    <TextBlock Classes="body">
+      3. Слияние с использованием битовых масок: После того как все подмассивы
+      отсортированы, они сливаются в один отсортированный массив с использованием
+      битовых масок. Битовые маски позволяют эффективно выбирать элементы из
+      подмассивов для слияния без дополнительных сравнений.
+    </TextBlock>
+
+    <TextBlock Classes="body">
+      4. Повторение шагов 1-3: Шаги 1-3 рекурсивно повторяются до тех пор,
+      пока весь массив данных не будет отсортирован.
+    </TextBlock>
+
+    <TextBlock Text="Алгоритм"
+               Classes="h2"/>
+
+    <TextBlock Classes="body">
+      Введите массив
+    </TextBlock>
+    
+    <TextBox Text="{Binding ArrayString}" Watermark="Введите массив" />
+
+    <Button Command="{Binding SortCommand}" Margin="0,8">Начать сортировку</Button>
+
+    <TextBlock Classes="body" 
+               IsVisible="{Binding ErrorText}" 
+               Foreground="Red"
+               Text="{Binding ErrorText}"/>
+
+    <TextBlock Classes="body">
+      История алгоритма
+    </TextBlock>
+    <ListBox ItemsSource="{Binding SortHistory}"/>
+    
+  </StackPanel>
+</UserControl>

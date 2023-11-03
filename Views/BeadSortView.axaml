@@ -1,0 +1,75 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Baytik.ViewModels"
+             x:DataType="vm:BeadSortViewModel"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Baytik.Views.BeadSortView">
+  <StackPanel>
+    <TextBlock Text="Сортировка нитевидная"
+               Classes="h1"/>
+    <TextBlock Classes="body">
+      Bbaytik lox нитевидная, также известная как "сортировка нитями" 
+      или "сортировка бисером", представляет собой метод сортировки, 
+      который использует аналогию с сортировкой нитей разных цветов. 
+      Этот метод обычно применяется для сортировки небольших наборов 
+      данных или элементов с небольшими значениями.
+    </TextBlock>
+
+    <TextBlock Classes="body">
+      Основной принцип нитевидной сортировки заключается в создании нитей 
+      (контейнеров) для каждого уникального значения в наборе данных и 
+      последующем размещении элементов данных в соответствующих 
+      нитях на основе их значений.
+    </TextBlock>
+
+    <TextBlock Text="Краткое описание алгоритма нитевидной сортировки"
+               Classes="h2"/>
+
+    <TextBlock Classes="body">
+      1. Создание нитей: Начните с создания нитей (контейнеров) для каждого 
+      уникального значения в наборе данных. Каждая нить представляет 
+      определенное значение.
+    </TextBlock>
+
+    <TextBlock Classes="body">
+      2. Размещение элементов: Переберите все элементы данных и поместите их 
+      в соответствующие нити в соответствии с их значениями.
+      В данном случае в качестве нитей мы используем разряд чисел. Алгоритм
+      начинает с единичного разряда.
+    </TextBlock>
+
+    <TextBlock Classes="body">
+      3. Слияние нитей: После того как все элементы данных помещены в соответствующие нити, 
+      объедините их, идя от одной нити к другой, чтобы получить отсортированный результат.
+    </TextBlock>
+
+    <TextBlock Classes="body">
+      4. Получение отсортированного результата: Теперь у вас есть отсортированный 
+      набор данных, который может быть использован по вашему усмотрению.
+    </TextBlock>
+
+    <TextBlock Text="Алгоритм"
+               Classes="h2"/>
+
+    <TextBlock Classes="body">
+      Введите массив
+    </TextBlock>
+
+    <TextBox Text="{Binding ArrayString}" Watermark="Введите массив" />
+
+    <Button Command="{Binding SortCommand}" Margin="0,8">Начать сортировку</Button>
+
+    <TextBlock Classes="body"
+               IsVisible="{Binding ErrorText}"
+               Foreground="Red"
+               Text="{Binding ErrorText}"/>
+
+    <TextBlock Classes="body">
+      История алгоритма
+    </TextBlock>
+    <ListBox ItemsSource="{Binding SortHistory}"/>
+
+  </StackPanel>
+</UserControl>

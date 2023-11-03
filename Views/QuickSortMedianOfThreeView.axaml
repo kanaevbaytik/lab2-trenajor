@@ -1,0 +1,73 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Baytik.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="vm:QuickSortMedianOfThreeViewModel"
+             x:Class="Baytik.Views.QuickSortMedianOfThreeView">
+  <StackPanel>
+    <TextBlock Text="Сортировка Хоара с использованием медианы (Median of Three Quick Sort)"
+           Classes="h1"/>
+    <TextBlock Classes="body">
+      Сортировка Хоара с использованием медианы, также известная как "Median of Three Quick Sort,"
+      представляет собой вариант быстрой сортировки, который улучшает производительность
+      за счет выбора медианного элемента из трех различных элементов в качестве опорного элемента.
+      Это помогает избежать худших случаев, когда быстрая сортировка может выполняться очень медленно.
+    </TextBlock>
+
+    <TextBlock Classes="body">
+      Основные шаги этого алгоритма следующие:
+    </TextBlock>
+
+    <TextBlock Text="Шаг 1: Выбор медианы"
+               Classes="h2"/>
+    <TextBlock Classes="body">
+      1. Выберите три элемента из массива, обычно это первый элемент, средний элемент и последний элемент.
+    </TextBlock>
+    <TextBlock Classes="body">
+      2. Найдите медианный элемент среди выбранных трех элементов. Это может потребовать сравнения между ними.
+    </TextBlock>
+    <TextBlock Classes="body">
+      3. Поменяйте медианный элемент с последним элементом в массиве. Теперь медианный элемент будет использоваться в качестве опорного элемента.
+    </TextBlock>
+
+    <TextBlock Text="Шаг 2: Разделение и слияние"
+               Classes="h2"/>
+    <TextBlock Classes="body">
+      4. Разделите массив на две части: одна часть содержит элементы, которые меньше опорного элемента, а другая часть содержит элементы, которые больше опорного элемента. Это делается так же, как в обычной быстрой сортировке.
+    </TextBlock>
+    <TextBlock Classes="body">
+      5. Рекурсивно примените сортировку Хоара к обеим частям массива.
+    </TextBlock>
+    <TextBlock Classes="body">
+      6. Когда размер части массива станет меньше определенного порога (например, 10 элементов), переключитесь на другой метод сортировки, такой как сортировка вставками, чтобы уменьшить накладные расходы на рекурсию.
+    </TextBlock>
+
+    <TextBlock Classes="body">
+      Использование медианы в качестве опорного элемента обычно уменьшает вероятность возникновения худших случаев и улучшает производительность быстрой сортировки.
+    </TextBlock>
+
+    <TextBlock Text="Алгоритм"
+               Classes="h2"/>
+
+    <TextBlock Classes="body">
+      Введите массив
+    </TextBlock>
+
+    <TextBox Text="{Binding ArrayString}" Watermark="Введите массив" />
+
+    <Button Command="{Binding SortCommand}" Margin="0,8">Начать сортировку</Button>
+
+    <TextBlock Classes="body"
+               IsVisible="{Binding ErrorText}"
+               Foreground="Red"
+               Text="{Binding ErrorText}"/>
+
+    <TextBlock Classes="body">
+      История алгоритма
+    </TextBlock>
+    <ListBox ItemsSource="{Binding SortHistory}"/>
+
+  </StackPanel>
+</UserControl>
